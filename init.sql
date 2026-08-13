@@ -16,7 +16,7 @@ CREATE TABLE Usuario(
 
 CREATE TABLE Emisor(
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    id_usuario INT,
+    id_usuario INT UNIQUE,
     sede_reg VARCHAR(255),
     sede_juris VARCHAR(255),
 
@@ -25,7 +25,7 @@ CREATE TABLE Emisor(
 
 CREATE TABLE Receptor(
 id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-id_usuario INT,
+id_usuario INT UNIQUE,
 estado INT,
 
 CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
@@ -49,8 +49,8 @@ tipo VARCHAR(255)
 
 CREATE TABLE Ticket_detalle(
 id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-id_ticket INT,
-id_categoria INT,
+id_ticket INT UNIQUE,
+id_categoria INT UNIQUE,
 descripcion_problema VARCHAR(255),
 fecha_recepcion TIMESTAMP,
 nivel_importancia VARCHAR(255),
